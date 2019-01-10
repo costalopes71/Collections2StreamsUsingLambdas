@@ -2,6 +2,7 @@ package com.pluralsight.collections2streamsusinglambda.collectionsapi.livecoding
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class MainAPICollection {
@@ -17,7 +18,17 @@ public class MainAPICollection {
 		
 		List<Person> people = new ArrayList<>(Arrays.asList(p1,p2,p3,p4,p5,p6));
 		
-		people.forEach(person -> System.out.println(person));
+		// method: removeIf
+		people.removeIf(p -> p.getAge() < 30);
+		
+		// replaceAll
+		people.replaceAll(p -> new Person(p.getName().toUpperCase(), p.getAge()));
+		
+		// sort
+		people.sort(Comparator.comparing(Person::getAge).reversed());
+		
+		
+//		people.forEach(person -> System.out.println(person));
 		// ou
 		people.forEach(System.out::println); // method reference
 		
